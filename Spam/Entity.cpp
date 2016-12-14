@@ -1,11 +1,12 @@
 #include "stdafx.h"
 #include "Entity.h"
+#include "Util.h"
 
 
 Entity::Entity(HINSTANCE hInstance, Metrics* metrics) {
 	this->metrics = metrics;
 
-	wTitle = L"Spam";
+	wTitle = L"";
 	wClass = L"SpamClass";
 
 	width = height = x = y = 0;
@@ -26,12 +27,21 @@ Entity::Entity(HINSTANCE hInstance, Metrics* metrics) {
 	RegisterClassExW(&wcex);
 
 	hInst = hInstance;
-	hWnd = CreateWindowW(wClass, wTitle, WS_OVERLAPPEDWINDOW,
+	hWnd = CreateWindowW(wClass, wTitle, WS_SYSMENU,
 		CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
 	if (!hWnd)
 		throw "Couldn't create window";
+	SetWindowLongPtr(hWnd, GWLP_USERDATA, (LONG)this);
 	ShowWindow(hWnd, SW_SHOWNORMAL);
 	UpdateWindow(hWnd);
+}
+
+void Entity::update(double elapsed) {
+	SetWindowPos(hWnd, HWND_TOP, x, y, 0, 0, SWP_NOSIZE);
+}
+
+void Entity::onExit() {
+
 }
 
 void Entity::setSize(int width, int height) {
@@ -40,7 +50,33 @@ void Entity::setSize(int width, int height) {
 	SetWindowPos(hWnd, HWND_TOP, 0, 0, width, height, SWP_NOMOVE);
 }
 
+void Entity::alignLeft(int x) {
+	this->x = metrics->x(x);
+}
+
+void Entity::alignCenter(int x) {
+	this->x = metrics->x(x) - (width / 2);
+}
+
+void Entity::alignRight(int x) {
+	this->x = metrics->x(x) - width;
+}
+
+void Entity::alignTop(int y) {
+	this->y = metrics->y(y);
+}
+
+void Entity::alignMiddle(int y) {
+	this->y = metrics->y(y) - (height / 2);
+}
+
+void Entity::alignBot(int y) {
+	this->y = metrics->y(y) - height;
+}
+
 LRESULT CALLBACK Entity::wndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
+	Entity* ent = reinterpret_cast<Entity*>(GetWindowLongPtr(hWnd, GWLP_USERDATA));
+
 	switch (message) {
 		case WM_PAINT: {
 			PAINTSTRUCT ps;
@@ -49,7 +85,7 @@ LRESULT CALLBACK Entity::wndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
 			break;
 		}
 		case WM_DESTROY:
-			PostQuitMessage(0);
+			ent->onExit();
 			break;
 		default:
 			return DefWindowProc(hWnd, message, wParam, lParam);

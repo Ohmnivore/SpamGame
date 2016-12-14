@@ -7,6 +7,9 @@ public:
 	int x(int x);
 	int y(int y);
 
+	int width;
+	int height;
+
 	int halfW;
 	int thirdW;
 	int fourthW;
@@ -24,6 +27,4 @@ private:
 	int right;
 	int top;
 	int bot;
-	int width;
-	int height;
 };
