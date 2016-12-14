@@ -3,11 +3,21 @@ class Metrics {
 public:
 	Metrics(HWND hWnd);
 	~Metrics();
-	double half;
-	double third;
-	double fourth;
-	double sixth;
-	double eight;
+
+	int x(int x);
+	int y(int y);
+
+	int halfW;
+	int thirdW;
+	int fourthW;
+	int sixthW;
+	int eightW;
+
+	int halfH;
+	int thirdH;
+	int fourthH;
+	int sixthH;
+	int eightH;
 
 private:
 	int left;
@@ -17,4 +27,3 @@ private:
 	int width;
 	int height;
 };
-
