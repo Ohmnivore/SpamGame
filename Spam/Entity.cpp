@@ -40,7 +40,8 @@ void Entity::update(double elapsed) {
 	x += velX * elapsed;
 	y += velY * elapsed;
 
-	SetWindowPos(hWnd, HWND_TOP, x, y, 0, 0, SWP_NOSIZE);
+	SetWindowPos(hWnd, HWND_TOP, x, y, 0, 0, SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE);
+	UpdateWindow(hWnd);
 }
 
 void Entity::onExit() {
