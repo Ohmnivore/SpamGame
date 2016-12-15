@@ -36,6 +36,12 @@ Entity::Entity(HINSTANCE hInstance, Metrics* metrics) {
 	UpdateWindow(hWnd);
 }
 
+void Entity::loadImage(std::wstring path) {
+	hImg = (HBITMAP)LoadImage(NULL, (LPCWSTR)path.c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_LOADTRANSPARENT);
+	if (hImg == NULL)
+		throw "Couldn't load image";
+}
+
 void Entity::update(double elapsed) {
 	x += velX * elapsed;
 	y += velY * elapsed;
@@ -49,6 +55,8 @@ void Entity::onExit() {
 }
 
 void Entity::setSize(int width, int height) {
+	if (height > width)
+		height = width;
 	this->width = width;
 	this->height = height;
 	SetWindowPos(hWnd, HWND_TOP, 0, 0, width, height, SWP_NOMOVE);
@@ -85,7 +93,42 @@ LRESULT CALLBACK Entity::wndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
 		case WM_PAINT: {
 			PAINTSTRUCT ps;
 			HDC hdc = BeginPaint(hWnd, &ps);
-			EndPaint(hWnd, &ps);
+
+			if (ent->hImg == NULL)
+				EndPaint(hWnd, &ps);
+			else {
+				RECT rect;
+				GetClientRect(hWnd, &rect);
+				int clientWidth = rect.right - rect.left;
+				int clientHeight = rect.bottom - rect.top;
+				int orgWidth = 1280;
+				int orgHeight = 640;
+				int srcWidth = 0;
+				int srcHeight = 0;
+				double clientRatio = (double)clientHeight / (double)clientWidth;
+				double orgRatio = (double)orgHeight / (double)orgWidth;
+
+				srcWidth = orgWidth;
+				srcHeight = (double)orgHeight * (clientRatio / orgRatio);
+
+				HDC hdcMem = CreateCompatibleDC(hdc); // hDC is a DC structure supplied by Win32API
+				SelectObject(hdcMem, ent->hImg);
+				SetStretchBltMode(hdc, COLORONCOLOR);
+				StretchBlt(
+					hdc,               // destination DC
+					0,                 // x upper left
+					0,                 // y upper left
+					clientWidth,       // destination width
+					clientHeight,      // destination height
+					hdcMem,            // you just created this above
+					0,
+					0,                 // x and y upper left
+					srcWidth,          // source bitmap width
+					srcHeight,         // source bitmap height
+					SRCCOPY);          // raster operation
+				DeleteDC(hdcMem);
+				EndPaint(hWnd, &ps);
+			}
 			break;
 		}
 		case WM_DESTROY:

@@ -6,7 +6,6 @@
 #include "Util.h"
 #include "Reg.h"
 #include "Spawner.h"
-#include <vector>
 using namespace std;
 
 int lastTick;

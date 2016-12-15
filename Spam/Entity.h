@@ -6,6 +6,7 @@ public:
 	Entity(HINSTANCE hInstance, Metrics* metrics);
 	~Entity();
 
+	void loadImage(std::wstring path);
 	virtual void update(double elapsed);
 	virtual void onExit();
 
@@ -19,6 +20,7 @@ public:
 
 	HINSTANCE hInst;
 	HWND hWnd;
+	HBITMAP hImg;
 	Metrics* metrics;
 
 	int width;

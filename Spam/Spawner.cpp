@@ -21,8 +21,9 @@ void Spawner::update(double elapsed) {
 void Spawner::spawn() {
 	Entity* ent = new Entity(Reg::inst, Reg::m);
 	Reg::ents.push_back(ent);
+	ent->loadImage(Reg::getRandomImage());
 
-	ent->setSize(Reg::m->thirdW - Reg::m->margin * 2, Reg::m->fourthH);
+	ent->setSize(Reg::m->thirdW - Reg::m->margin * 2, Reg::m->thirdH - Reg::m->margin * 2);
 	ent->alignCenter(x);
 	ent->alignBot(y);
 
@@ -32,10 +33,8 @@ void Spawner::spawn() {
 void Spawner::setTrigger() {
 	elapsed = 0;
 
-	std::random_device rd;
-	std::mt19937 rng(rd());
 	std::uniform_int_distribution<int> uni(5, 8);
-	trigger = uni(rng);
+	trigger = uni(Reg::rng);
 }
 
 Spawner::~Spawner() {
