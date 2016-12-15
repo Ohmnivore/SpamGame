@@ -139,6 +139,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Metrics.h" />
+    <ClInclude Include="Reg.h" />
     <ClInclude Include="Scoreboard.h" />
     <ClInclude Include="Spam.h" />
     <ClInclude Include="stdafx.h" />

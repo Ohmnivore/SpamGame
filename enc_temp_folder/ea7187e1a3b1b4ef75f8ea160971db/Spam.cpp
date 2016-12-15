@@ -29,6 +29,22 @@ int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmd
 	ent2->alignCenter(Reg::m->fourthH);
 	ent2->velY = Reg::m->eightH;
 
+    /*MSG msg;
+    while (GetMessage(&msg, nullptr, 0, 0)) {
+        TranslateMessage(&msg);
+        DispatchMessage(&msg);
+
+		if (!lastTick)
+			lastTick = GetTickCount();
+		int nowTick = GetTickCount();
+		int delta = nowTick - lastTick;
+		if (delta >= frameMS) {
+			lastTick = nowTick;
+			for (Entity* e : ents) {
+				e->update(delta / 1000.0);
+			}
+		}
+    }*/
 	MSG msg;
 	while (true) {
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)) {

@@ -32,6 +32,9 @@
     <ClInclude Include="Scoreboard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Reg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

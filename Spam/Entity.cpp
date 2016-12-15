@@ -9,7 +9,7 @@ Entity::Entity(HINSTANCE hInstance, Metrics* metrics) {
 	wTitle = L"";
 	wClass = L"SpamClass";
 
-	width = height = x = y = 0;
+	width = height = x = y = velX = velY = 0;
 
 	WNDCLASSEXW wcex;
 	wcex.cbSize = sizeof(WNDCLASSEX);
@@ -37,6 +37,9 @@ Entity::Entity(HINSTANCE hInstance, Metrics* metrics) {
 }
 
 void Entity::update(double elapsed) {
+	x += velX * elapsed;
+	y += velY * elapsed;
+
 	SetWindowPos(hWnd, HWND_TOP, x, y, 0, 0, SWP_NOSIZE);
 }
 
@@ -95,4 +98,9 @@ LRESULT CALLBACK Entity::wndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
 }
 
 Entity::~Entity() {
+	wTitle = nullptr;
+	wClass = nullptr;
+	metrics = nullptr;
+
+	CloseWindow(hWnd);
 }

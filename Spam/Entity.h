@@ -23,8 +23,10 @@ public:
 
 	int width;
 	int height;
-	int x;
-	int y;
+	double x;
+	double y;
+	double velX;
+	double velY;
 
 private:
 	static LRESULT CALLBACK wndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
