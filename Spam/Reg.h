@@ -1,14 +1,13 @@
 #pragma once
 #include "Metrics.h"
 #include "Entity.h"
+#include <vector>
 
 namespace Reg {
 
-	Metrics* m;
+	extern Metrics* m;
+	extern HINSTANCE inst;
+	extern std::vector<Entity*> ents;
 
-	void init(HINSTANCE hInst) {
-		Entity ent = Entity(hInst, nullptr);
-		ent.setSize(0, 0);
-		m = new Metrics(ent.hWnd);
-	}
+	extern void init(HINSTANCE hInst);
 };

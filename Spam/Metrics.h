@@ -9,6 +9,7 @@ public:
 
 	int width;
 	int height;
+	int margin;
 
 	int halfW;
 	int thirdW;

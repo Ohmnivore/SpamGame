@@ -142,6 +142,7 @@
     <ClInclude Include="Reg.h" />
     <ClInclude Include="Scoreboard.h" />
     <ClInclude Include="Spam.h" />
+    <ClInclude Include="Spawner.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Entity.h" />
@@ -149,8 +150,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Metrics.cpp" />
+    <ClCompile Include="Reg.cpp" />
     <ClCompile Include="Scoreboard.cpp" />
     <ClCompile Include="Spam.cpp" />
+    <ClCompile Include="Spawner.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

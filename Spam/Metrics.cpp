@@ -14,6 +14,7 @@ Metrics::Metrics(HWND hWnd) {
 	bot = mInfo.rcWork.bottom;
 	width = right - left;
 	height = bot - top;
+	margin = width / 48;
 
 	halfW   = width / 2;
 	thirdW  = width / 3;
