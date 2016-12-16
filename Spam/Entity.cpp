@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Entity.h"
 #include "Util.h"
+#include "Reg.h"
 
 
 Entity::Entity(HINSTANCE hInstance, Metrics* metrics) {
@@ -8,6 +9,7 @@ Entity::Entity(HINSTANCE hInstance, Metrics* metrics) {
 
 	wTitle = L"";
 	wClass = L"SpamClass";
+	score = 1;
 
 	width = height = x = y = velX = velY = 0;
 
@@ -51,6 +53,10 @@ void Entity::update(double elapsed) {
 }
 
 void Entity::onExit() {
+	Reg::score += score;
+}
+
+void Entity::onPaint(HDC hdc) {
 
 }
 
@@ -94,6 +100,9 @@ LRESULT CALLBACK Entity::wndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
 			PAINTSTRUCT ps;
 			HDC hdc = BeginPaint(hWnd, &ps);
 
+			if (ent->hWnd != NULL)
+				ent->onPaint(hdc);
+
 			if (ent->hImg == NULL)
 				EndPaint(hWnd, &ps);
 			else {
@@ -111,7 +120,7 @@ LRESULT CALLBACK Entity::wndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
 				srcWidth = orgWidth;
 				srcHeight = (double)orgHeight * (clientRatio / orgRatio);
 
-				HDC hdcMem = CreateCompatibleDC(hdc); // hDC is a DC structure supplied by Win32API
+				HDC hdcMem = CreateCompatibleDC(hdc);
 				SelectObject(hdcMem, ent->hImg);
 				SetStretchBltMode(hdc, COLORONCOLOR);
 				StretchBlt(

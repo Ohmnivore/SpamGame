@@ -8,6 +8,7 @@ namespace Reg {
 	std::vector<Entity*> ents;
 	std::vector<std::wstring*> images;
 	std::mt19937 rng;
+	int score;
 
 	void initImages();
 
@@ -19,6 +20,7 @@ namespace Reg {
 		initImages();
 
 		std::random_device rd;
+		score = 0;
 		rng = std::mt19937(rd());
 	}
 

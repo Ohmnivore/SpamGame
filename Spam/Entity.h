@@ -9,6 +9,7 @@ public:
 	void loadImage(std::wstring path);
 	virtual void update(double elapsed);
 	virtual void onExit();
+	virtual void onPaint(HDC hdc);
 
 	void setSize(int width, int height);
 	void alignLeft(int x);
@@ -35,4 +36,5 @@ private:
 
 	WCHAR* wTitle;
 	WCHAR* wClass;
+	int score;
 };
