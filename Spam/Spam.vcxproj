@@ -177,7 +177,17 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="images\curly_pills.bmp" />
+    <Image Include="images\elevators.bmp" />
+    <Image Include="images\gold.bmp" />
+    <Image Include="images\goldfish.bmp" />
+    <Image Include="images\hot_moms.bmp" />
+    <Image Include="images\hot_moms.png" />
+    <Image Include="images\konami_code.bmp" />
+    <Image Include="images\president.bmp" />
+    <Image Include="images\ram.bmp" />
+    <Image Include="images\rich.bmp" />
     <Image Include="images\trojan_horses.bmp" />
+    <Image Include="images\water_bills.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

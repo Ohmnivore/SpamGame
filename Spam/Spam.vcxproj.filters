@@ -75,5 +75,35 @@
     <Image Include="images\curly_pills.bmp">
       <Filter>Images</Filter>
     </Image>
+    <Image Include="images\gold.bmp">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="images\goldfish.bmp">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="images\hot_moms.png">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="images\konami_code.bmp">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="images\president.bmp">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="images\ram.bmp">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="images\rich.bmp">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="images\hot_moms.bmp">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="images\water_bills.bmp">
+      <Filter>Images</Filter>
+    </Image>
+    <Image Include="images\elevators.bmp">
+      <Filter>Images</Filter>
+    </Image>
   </ItemGroup>
 </Project>

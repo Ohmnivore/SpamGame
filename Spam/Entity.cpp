@@ -121,8 +121,8 @@ LRESULT CALLBACK Entity::wndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
 					clientWidth,       // destination width
 					clientHeight,      // destination height
 					hdcMem,            // you just created this above
-					0,
-					0,                 // x and y upper left
+					0,                 // x upper left
+					0,                 // y upper left
 					srcWidth,          // source bitmap width
 					srcHeight,         // source bitmap height
 					SRCCOPY);          // raster operation
