@@ -3,6 +3,7 @@
 #include "Window.h"
 #include "Reg.h"
 #include <random>
+#include "EnemyBasic.h"
 
 Spawner::Spawner(int x, int y) {
 	this->x = x;
@@ -19,7 +20,7 @@ void Spawner::update(double elapsed) {
 }
 
 void Spawner::spawn() {
-	Window* ent = new Window(Reg::inst, Reg::m);
+	EnemyBasic* ent = new EnemyBasic();
 	Reg::ents.push_back((Entity*)ent);
 	ent->loadImage(Reg::getRandomImage());
 

@@ -15,7 +15,7 @@ int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmd
 	toggleDesktopIconsVisible();
 	Reg::init(hInstance);
 
-	Scoreboard* scoreBoard = new Scoreboard(Reg::inst, Reg::m);
+	Scoreboard* scoreBoard = new Scoreboard();
 	Reg::ents.push_back((Entity*)scoreBoard);
 	scoreBoard->setSize(Reg::m->eightW, Reg::m->eightH);
 	scoreBoard->alignRight(Reg::m->width);

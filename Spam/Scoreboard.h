@@ -3,7 +3,7 @@
 
 class Scoreboard : public Window {
 public:
-	Scoreboard(HINSTANCE hInstance, Metrics* metrics);
+	Scoreboard();
 	~Scoreboard();
 
 	void update(double elapsed);

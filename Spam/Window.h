@@ -4,7 +4,7 @@
 
 class Window : Entity {
 public:
-	Window(HINSTANCE hInstance, Metrics* metrics);
+	Window();
 	~Window();
 
 	virtual void loadImage(std::wstring path);
@@ -32,7 +32,7 @@ public:
 	double velX;
 	double velY;
 
-private:
+protected:
 	static LRESULT CALLBACK wndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
 
 	WCHAR* wTitle;

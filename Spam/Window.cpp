@@ -4,12 +4,12 @@
 #include "Reg.h"
 
 
-Window::Window(HINSTANCE hInstance, Metrics* metrics) {
-	this->metrics = metrics;
+Window::Window() {
+	this->metrics = Reg::m;
 
 	wTitle = L"";
 	wClass = L"SpamClass";
-	score = 1;
+	score = 0;
 
 	width = height = x = y = velX = velY = 0;
 
@@ -19,7 +19,7 @@ Window::Window(HINSTANCE hInstance, Metrics* metrics) {
 	wcex.lpfnWndProc = wndProc;
 	wcex.cbClsExtra = 0;
 	wcex.cbWndExtra = 0;
-	wcex.hInstance = hInstance;
+	wcex.hInstance = Reg::inst;
 	wcex.hIcon = LoadIcon(NULL, IDI_APPLICATION);
 	wcex.hCursor = LoadCursor(NULL, IDC_ARROW);
 	wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
@@ -28,9 +28,9 @@ Window::Window(HINSTANCE hInstance, Metrics* metrics) {
 	wcex.hIconSm = LoadIcon(NULL, IDI_APPLICATION);
 	RegisterClassExW(&wcex);
 
-	hInst = hInstance;
+	hInst = Reg::inst;
 	hWnd = CreateWindowW(wClass, wTitle, WS_SYSMENU,
-		CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+		CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInst, nullptr);
 	if (!hWnd)
 		throw "Couldn't create window";
 	SetWindowLongPtr(hWnd, GWLP_USERDATA, (LONG)this);

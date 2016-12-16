@@ -13,10 +13,10 @@ namespace Reg {
 	void initImages();
 
 	void init(HINSTANCE hInst) {
-		Window ent = Window(hInst, nullptr);
+		inst = hInst;
+		Window ent = Window();
 		ent.setSize(0, 0);
 		m = new Metrics(ent.hWnd);
-		inst = hInst;
 		initImages();
 
 		std::random_device rd;

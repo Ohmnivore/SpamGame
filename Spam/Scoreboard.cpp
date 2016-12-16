@@ -3,7 +3,7 @@
 #include "Util.h"
 #include "Reg.h"
 
-Scoreboard::Scoreboard(HINSTANCE hInstance, Metrics* metrics) : Window::Window(hInstance, metrics) {
+Scoreboard::Scoreboard() : Window::Window() {
 	oldScore = -1;
 }
 
