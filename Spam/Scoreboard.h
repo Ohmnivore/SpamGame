@@ -1,7 +1,7 @@
 #pragma once
-#include "Entity.h"
+#include "Window.h"
 
-class Scoreboard : Entity {
+class Scoreboard : public Window {
 public:
 	Scoreboard(HINSTANCE hInstance, Metrics* metrics);
 	~Scoreboard();

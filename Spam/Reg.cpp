@@ -5,7 +5,7 @@ namespace Reg {
 
 	Metrics* m;
 	HINSTANCE inst;
-	std::vector<Entity*> ents;
+	std::list<Entity*> ents;
 	std::vector<std::wstring*> images;
 	std::mt19937 rng;
 	int score;
@@ -13,7 +13,7 @@ namespace Reg {
 	void initImages();
 
 	void init(HINSTANCE hInst) {
-		Entity ent = Entity(hInst, nullptr);
+		Window ent = Window(hInst, nullptr);
 		ent.setSize(0, 0);
 		m = new Metrics(ent.hWnd);
 		inst = hInst;

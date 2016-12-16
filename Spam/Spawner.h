@@ -1,5 +1,7 @@
 #pragma once
-class Spawner {
+#include "Entity.h"
+
+class Spawner : public Entity {
 public:
 	Spawner(int x, int y);
 	~Spawner();

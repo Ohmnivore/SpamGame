@@ -3,12 +3,12 @@
 #include "Util.h"
 #include "Reg.h"
 
-Scoreboard::Scoreboard(HINSTANCE hInstance, Metrics* metrics) : Entity::Entity(hInstance, metrics) {
+Scoreboard::Scoreboard(HINSTANCE hInstance, Metrics* metrics) : Window::Window(hInstance, metrics) {
 	oldScore = -1;
 }
 
 void Scoreboard::update(double elapsed) {
-	Entity::update(elapsed);
+	Window::update(elapsed);
 
 	if (oldScore != Reg::score) {
 		oldScore = Reg::score;

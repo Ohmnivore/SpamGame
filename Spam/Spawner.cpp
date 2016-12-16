@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Spawner.h"
-#include "Entity.h"
+#include "Window.h"
 #include "Reg.h"
 #include <random>
 
@@ -19,8 +19,8 @@ void Spawner::update(double elapsed) {
 }
 
 void Spawner::spawn() {
-	Entity* ent = new Entity(Reg::inst, Reg::m);
-	Reg::ents.push_back(ent);
+	Window* ent = new Window(Reg::inst, Reg::m);
+	Reg::ents.push_back((Entity*)ent);
 	ent->loadImage(Reg::getRandomImage());
 
 	ent->setSize(Reg::m->thirdW - Reg::m->margin * 2, Reg::m->thirdH - Reg::m->margin * 2);
