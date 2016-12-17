@@ -45,15 +45,18 @@ void Window::loadImage(std::wstring path) {
 }
 
 void Window::update(double elapsed) {
-	x += velX * elapsed;
-	y += velY * elapsed;
+	if (!Reg::paused) {
+		x += velX * elapsed;
+		y += velY * elapsed;
+	}
 
 	SetWindowPos(hWnd, HWND_TOP, x + Reg::shakeX, y + Reg::shakeY, 0, 0, SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE);
 	UpdateWindow(hWnd);
 }
 
 void Window::onExit() {
-	Reg::score += score;
+	if (!Reg::paused)
+		Reg::score += score;
 }
 
 void Window::onPaint(HDC hdc) {

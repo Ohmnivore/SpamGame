@@ -12,16 +12,18 @@ Spawner::Spawner(int x, int y) {
 }
 
 void Spawner::update(double elapsed) {
-	this->elapsed += elapsed;
-	if (this->elapsed >= trigger) {
-		spawn();
-		setTrigger();
+	if (!Reg::paused) {
+		this->elapsed += elapsed;
+		if (this->elapsed >= trigger) {
+			spawn();
+			setTrigger();
+		}
 	}
 }
 
 void Spawner::spawn() {
 	EnemyBasic* ent = new EnemyBasic();
-	Reg::ents.push_back((Entity*)ent);
+	Reg::add(ent);
 	ent->loadImage(Reg::getRandomImage());
 
 	ent->setSize(Reg::m->thirdW - Reg::m->margin * 2, Reg::m->thirdH - Reg::m->margin * 2);

@@ -10,7 +10,8 @@
  * Horizontal slide-in to middle of screen
  * Circle motion
  * Accelerating/decelerating
-* Timer class with callback
-* Game over popup + screenshake -> play again/exit
+* Game over: play again button
+* Get/set highscore
 * Bundle bmps into the exe
+* Proper destructors
 * Detect pause cheat and show popup

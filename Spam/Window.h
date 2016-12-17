@@ -2,7 +2,7 @@
 #include "Entity.h"
 #include "Metrics.h"
 
-class Window : Entity {
+class Window : public Entity {
 public:
 	Window();
 	~Window();

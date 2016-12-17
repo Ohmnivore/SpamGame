@@ -4,6 +4,10 @@
 #include "Reg.h"
 
 Scoreboard::Scoreboard() : Window::Window() {
+	setSize(metrics->eightW, metrics->eightH);
+	alignRight(metrics->width);
+	alignBot(metrics->height);
+
 	oldScore = -1;
 }
 

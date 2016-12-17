@@ -17,9 +17,6 @@ int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmd
 
 	Scoreboard* scoreBoard = new Scoreboard();
 	Reg::ents.push_back((Entity*)scoreBoard);
-	scoreBoard->setSize(Reg::m->eightW, Reg::m->eightH);
-	scoreBoard->alignRight(Reg::m->width);
-	scoreBoard->alignBot(Reg::m->height);
 
 	Spawner* s1 = new Spawner(Reg::m->thirdW * 0.5 + Reg::m->margin / 2, 0);
 	s1->spawn();
@@ -46,6 +43,7 @@ int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmd
 			if (!lastTick)
 				lastTick = nowTick;
 			int delta = nowTick - lastTick;
+
 			if (delta >= frameMS) {
 				lastTick = nowTick;
 				double elapsed = delta / 1000.0;

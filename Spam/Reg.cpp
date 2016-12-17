@@ -6,9 +6,12 @@ namespace Reg {
 	Metrics* m;
 	HINSTANCE inst;
 	std::list<Entity*> ents;
+	std::vector<Entity*> toAdd;
+	std::vector<Entity*> toRemove;
 	std::vector<std::wstring*> images;
 	std::mt19937 rng;
 	int score;
+	bool paused;
 	void initImages();
 
 	double shakeX;
@@ -26,11 +29,30 @@ namespace Reg {
 		std::random_device rd;
 		score = 0;
 		rng = std::mt19937(rd());
+		paused = false;
 
 		shakeX = shakeY = shakeTimer = shakeIntensity = 0;
 	}
 
+	void add(Entity* ent) {
+		toAdd.push_back(ent);
+	}
+
+	void remove(Entity* ent) {
+		toRemove.push_back(ent);
+	}
+
 	void update(double elapsed) {
+		while (!toAdd.empty()) {
+			ents.push_back(toAdd.back());
+			toAdd.pop_back();
+		}
+
+		while (!toRemove.empty()) {
+			ents.remove(toRemove.back());
+			toRemove.pop_back();
+		}
+
 		shakeTimer -= elapsed;
 		if (shakeTimer <= 0) {
 			shakeX = shakeY = shakeTimer = shakeIntensity = 0;
@@ -45,7 +67,8 @@ namespace Reg {
 	void shake(double length, double intensity) {
 		if (shakeTimer < length)
 			shakeTimer = length;
-		shakeIntensity += intensity;
+		if (shakeIntensity < intensity)
+			shakeIntensity = intensity;
 	}
 
 	void initImages() {
