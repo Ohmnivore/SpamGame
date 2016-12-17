@@ -9,8 +9,8 @@
  * Fast
  * Horizontal slide-in to middle of screen
  * Circle motion
- * Jumping/teleporting
+ * Accelerating/decelerating
 * Timer class with callback
-* Game over popup -> play again/exit
-* Screenshake
+* Game over popup + screenshake -> play again/exit
+* Bundle bmps into the exe
 * Detect pause cheat and show popup

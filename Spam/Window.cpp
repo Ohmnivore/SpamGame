@@ -48,7 +48,7 @@ void Window::update(double elapsed) {
 	x += velX * elapsed;
 	y += velY * elapsed;
 
-	SetWindowPos(hWnd, HWND_TOP, x, y, 0, 0, SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE);
+	SetWindowPos(hWnd, HWND_TOP, x + Reg::shakeX, y + Reg::shakeY, 0, 0, SWP_NOSIZE | SWP_NOZORDER | SWP_NOACTIVATE);
 	UpdateWindow(hWnd);
 }
 

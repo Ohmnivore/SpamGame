@@ -48,8 +48,10 @@ int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmd
 			int delta = nowTick - lastTick;
 			if (delta >= frameMS) {
 				lastTick = nowTick;
+				double elapsed = delta / 1000.0;
+				Reg::update(elapsed);
 				for (Entity* e : Reg::ents) {
-					e->update(delta / 1000.0);
+					e->update(elapsed);
 				}
 			}
 		}
