@@ -9,5 +9,8 @@ public:
 	void update(double elapsed);
 	void onExit();
 	void onPaint(HDC hdc);
+
+private:
+	std::wstring msg;
 };
 

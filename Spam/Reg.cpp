@@ -91,4 +91,22 @@ namespace Reg {
 		std::uniform_int_distribution<int> uni(0, images.size() - 1);
 		return *images.at(uni(Reg::rng));
 	}
+
+	int getHighscore() {
+		DWORD buffer;
+		unsigned long type = REG_DWORD;
+		unsigned long size = 1024;
+
+		HKEY hKey;
+		if (RegOpenKeyEx(HKEY_LOCAL_MACHINE, L"Software\\SpamGame\\Highscore", 0, KEY_QUERY_VALUE, &hKey) != ERROR_SUCCESS)
+			return 0;
+
+		if (RegQueryValueEx(hKey, L"Highscore", NULL, &type, (LPBYTE)&buffer, &size) != ERROR_SUCCESS) {
+			RegCloseKey(hKey);
+			return 0;
+		}
+
+		RegCloseKey(hKey);
+		return buffer;
+	}
 };

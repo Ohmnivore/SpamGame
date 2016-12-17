@@ -11,7 +11,7 @@
  * Circle motion
  * Accelerating/decelerating
 * Game over: play again button
-* Get/set highscore
+* Set highscore
 * Bundle bmps into the exe
 * Proper destructors
 * Detect pause cheat and show popup

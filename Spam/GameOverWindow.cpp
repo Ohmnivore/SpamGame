@@ -7,6 +7,13 @@ GameOverWindow::GameOverWindow() : Window::Window() {
 	setSize(metrics->thirdW, metrics->thirdH);
 	alignCenter(metrics->halfW);
 	alignMiddle(metrics->halfH);
+
+	msg = msg +
+		L"Game over. Your score was: " +
+		std::to_wstring(Reg::score) +
+		L". Your best score is: " +
+		std::to_wstring(Reg::getHighscore()) +
+		L".";
 }
 
 void GameOverWindow::onExit() {
@@ -26,8 +33,7 @@ void GameOverWindow::onPaint(HDC hdc) {
 	SetTextColor(hdc, 0x00000000);
 	SetBkMode(hdc, TRANSPARENT);
 
-	WCHAR buf[32];
-	DrawText(hdc, L"Game over. Your score was: ", -1, &rect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
+	DrawText(hdc, msg.c_str(), -1, &rect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
 }
 
 GameOverWindow::~GameOverWindow() {
