@@ -98,7 +98,7 @@ namespace Reg {
 		unsigned long size = 1024;
 
 		HKEY hKey;
-		if (RegOpenKeyEx(HKEY_LOCAL_MACHINE, L"Software\\SpamGame\\Highscore", 0, KEY_QUERY_VALUE, &hKey) != ERROR_SUCCESS)
+		if (RegOpenKeyEx(HKEY_CURRENT_USER, L"Software\\SpamGame\\Highscore", 0, KEY_QUERY_VALUE, &hKey) != ERROR_SUCCESS)
 			return 0;
 
 		if (RegQueryValueEx(hKey, L"Highscore", NULL, &type, (LPBYTE)&buffer, &size) != ERROR_SUCCESS) {
@@ -108,5 +108,20 @@ namespace Reg {
 
 		RegCloseKey(hKey);
 		return buffer;
+	}
+
+	void setHighscore(int score) {
+		DWORD buffer = (DWORD)score;
+
+		HKEY hKey;
+		if (RegCreateKey(HKEY_CURRENT_USER, L"Software\\SpamGame\\Highscore", &hKey) != ERROR_SUCCESS)
+			return;
+
+		if (RegSetValueEx(hKey, L"Highscore", NULL, REG_DWORD, (LPBYTE)&buffer, sizeof(buffer)) != ERROR_SUCCESS) {
+			RegCloseKey(hKey);
+			return;
+		}
+
+		RegCloseKey(hKey);
 	}
 };

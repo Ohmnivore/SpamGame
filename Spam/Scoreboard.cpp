@@ -23,6 +23,7 @@ void Scoreboard::update(double elapsed) {
 void Scoreboard::onExit() {
 	toggleDesktopIconsVisible();
 	PostQuitMessage(0);
+	delete this;
 }
 
 void Scoreboard::onPaint(HDC hdc) {

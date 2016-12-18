@@ -8,11 +8,16 @@ GameOverWindow::GameOverWindow() : Window::Window() {
 	alignCenter(metrics->halfW);
 	alignMiddle(metrics->halfH);
 
+	int highscore = Reg::getHighscore();
+	if (Reg::score > highscore)
+		highscore = Reg::score;
+	Reg::setHighscore(highscore);
+
 	msg = msg +
 		L"Game over. Your score was: " +
 		std::to_wstring(Reg::score) +
 		L". Your best score is: " +
-		std::to_wstring(Reg::getHighscore()) +
+		std::to_wstring(highscore) +
 		L".";
 }
 
