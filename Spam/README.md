@@ -11,5 +11,5 @@
  * Circle motion
  * Accelerating/decelerating
 * Cleanup code
- * Make #defines for inline constants
  * Figure out exception handling
+ * Comment code

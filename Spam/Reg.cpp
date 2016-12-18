@@ -4,6 +4,12 @@
 #include "Spawner.h"
 #include "resource.h"
 
+#define REG_SUBKEY L"Software\\SpamGame\\Highscore"
+#define REG_VALUE L"Highscore"
+#define PROG_CLASS L"Progman"
+#define PROG_TITLE L"Program Manager"
+#define PROG_CTRL 0x7402
+
 namespace Reg {
 
 	Metrics* m;
@@ -124,7 +130,7 @@ namespace Reg {
 	}
 
 	void toggleDesktopIconsVisible() {
-		SendMessage(GetWindow(FindWindow(L"Progman", L"Program Manager"), GW_CHILD), WM_COMMAND, 0x7402, 0);
+		SendMessage(GetWindow(FindWindow(PROG_CLASS, PROG_TITLE), GW_CHILD), WM_COMMAND, PROG_CTRL, 0);
 	}
 
 	int getHighscore() {
@@ -133,10 +139,10 @@ namespace Reg {
 		unsigned long size = 1024;
 
 		HKEY hKey;
-		if (RegOpenKeyEx(HKEY_CURRENT_USER, L"Software\\SpamGame\\Highscore", 0, KEY_QUERY_VALUE, &hKey) != ERROR_SUCCESS)
+		if (RegOpenKeyEx(HKEY_CURRENT_USER, REG_SUBKEY, 0, KEY_QUERY_VALUE, &hKey) != ERROR_SUCCESS)
 			return 0;
 
-		if (RegQueryValueEx(hKey, L"Highscore", NULL, &type, (LPBYTE)&buffer, &size) != ERROR_SUCCESS) {
+		if (RegQueryValueEx(hKey, REG_VALUE, NULL, &type, (LPBYTE)&buffer, &size) != ERROR_SUCCESS) {
 			RegCloseKey(hKey);
 			return 0;
 		}
@@ -149,10 +155,10 @@ namespace Reg {
 		DWORD buffer = (DWORD)score;
 
 		HKEY hKey;
-		if (RegCreateKey(HKEY_CURRENT_USER, L"Software\\SpamGame\\Highscore", &hKey) != ERROR_SUCCESS)
+		if (RegCreateKey(HKEY_CURRENT_USER, REG_SUBKEY, &hKey) != ERROR_SUCCESS)
 			return;
 
-		if (RegSetValueEx(hKey, L"Highscore", NULL, REG_DWORD, (LPBYTE)&buffer, sizeof(buffer)) != ERROR_SUCCESS) {
+		if (RegSetValueEx(hKey, REG_VALUE, NULL, REG_DWORD, (LPBYTE)&buffer, sizeof(buffer)) != ERROR_SUCCESS) {
 			RegCloseKey(hKey);
 			return;
 		}

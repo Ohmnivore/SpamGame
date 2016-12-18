@@ -12,9 +12,9 @@ namespace Reg {
 	extern std::list<Entity*> ents;
 	extern std::mt19937 rng;
 	extern int score;
+	extern bool paused;
 	extern double shakeX;
 	extern double shakeY;
-	extern bool paused;
 
 	extern void init(HINSTANCE hInst);
 	extern void reset();
