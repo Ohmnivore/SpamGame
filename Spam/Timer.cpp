@@ -29,5 +29,5 @@ void Timer::trigger() {
 }
 
 Timer::~Timer() {
-	Reg::remove(this);
+
 }

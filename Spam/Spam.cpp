@@ -14,18 +14,6 @@ int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmd
 	Reg::toggleDesktopIconsVisible();
 	Reg::init(hInstance);
 
-	Scoreboard* scoreBoard = new Scoreboard();
-
-	Spawner* s1 = new Spawner(Reg::m->thirdW * 0.5 + Reg::m->margin / 2, 0);
-	s1->spawn();
-	Spawner* s2 = new Spawner(Reg::m->thirdW * 1.5, 0);
-	s2->spawn();
-	Spawner* s3 = new Spawner(Reg::m->thirdW * 2.5 - Reg::m->margin / 2, 0);
-	s3->spawn();
-	Reg::ents.push_back((Entity*)s1);
-	Reg::ents.push_back((Entity*)s2);
-	Reg::ents.push_back((Entity*)s3);
-
 	MSG msg;
 	while (true) {
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE)) {

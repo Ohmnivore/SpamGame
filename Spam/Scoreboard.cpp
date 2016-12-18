@@ -21,6 +21,7 @@ void Scoreboard::update(double elapsed) {
 }
 
 void Scoreboard::onExit() {
+	Window::onExit();
 	Reg::toggleDesktopIconsVisible();
 	PostQuitMessage(0);
 	delete this;
@@ -38,4 +39,5 @@ void Scoreboard::onPaint(HDC hdc) {
 }
 
 Scoreboard::~Scoreboard() {
+
 }

@@ -40,4 +40,5 @@ void Spawner::setTrigger() {
 }
 
 Spawner::~Spawner() {
+
 }

@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "Reg.h"
+#include "Scoreboard.h"
+#include "Spawner.h"
 
 namespace Reg {
 
@@ -27,11 +29,39 @@ namespace Reg {
 		initImages();
 
 		std::random_device rd;
-		score = 0;
 		rng = std::mt19937(rd());
-		paused = false;
+		
+		toAdd.clear();
+		ents.clear();
+		reset();
+	}
 
+	void reset() {
+		while (!ents.empty()) {
+			Entity* ent = ents.back();
+			ents.pop_back();
+			delete ent;
+		}
+		while (!toAdd.empty()) {
+			Entity* ent = toAdd.back();
+			toAdd.pop_back();
+			delete ent;
+		}
+
+		score = 0;
+		paused = false;
 		shakeX = shakeY = shakeTimer = shakeIntensity = 0;
+
+		Scoreboard* scoreBoard = new Scoreboard();
+		Spawner* s1 = new Spawner(m->thirdW * 0.5 + m->margin / 2, 0);
+		s1->spawn();
+		Spawner* s2 = new Spawner(m->thirdW * 1.5, 0);
+		s2->spawn();
+		Spawner* s3 = new Spawner(m->thirdW * 2.5 - m->margin / 2, 0);
+		s3->spawn();
+		ents.push_back(s1);
+		ents.push_back(s2);
+		ents.push_back(s3);
 	}
 
 	void add(Entity* ent) {
@@ -49,8 +79,10 @@ namespace Reg {
 		}
 
 		while (!toRemove.empty()) {
-			ents.remove(toRemove.back());
+			Entity* rem = toRemove.back();
+			ents.remove(rem);
 			toRemove.pop_back();
+			delete rem;
 		}
 
 		shakeTimer -= elapsed;

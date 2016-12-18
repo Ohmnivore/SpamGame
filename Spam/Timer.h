@@ -4,7 +4,7 @@
 class Timer : public Entity {
 public:
 	Timer();
-	~Timer();
+	virtual ~Timer();
 	void start(double time);
 	virtual void update(double elapsed);
 	virtual void trigger();

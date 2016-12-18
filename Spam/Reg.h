@@ -17,6 +17,7 @@ namespace Reg {
 	extern bool paused;
 
 	extern void init(HINSTANCE hInst);
+	extern void reset();
 	extern void add(Entity* ent);
 	extern void remove(Entity* ent);
 	extern void update(double elapsed);

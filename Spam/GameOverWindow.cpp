@@ -29,8 +29,10 @@ GameOverWindow::GameOverWindow() : Window::Window() {
 }
 
 void GameOverWindow::onExit() {
+	Window::onExit();
 	Reg::toggleDesktopIconsVisible();
 	PostQuitMessage(0);
+	delete this;
 }
 
 void GameOverWindow::update(double elapsed) {
@@ -48,8 +50,9 @@ void GameOverWindow::onPaint(HDC hdc) {
 }
 
 void GameOverWindow::onCmd() {
-	throw "clicked";
+	Reg::reset();
 }
 
 GameOverWindow::~GameOverWindow() {
+
 }

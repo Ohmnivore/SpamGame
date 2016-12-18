@@ -164,8 +164,6 @@ LRESULT CALLBACK Window::wndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
 }
 
 Window::~Window() {
-	Reg::remove(this);
-
 	wTitle = nullptr;
 	wClass = nullptr;
 	metrics = nullptr;

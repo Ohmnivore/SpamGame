@@ -7,8 +7,7 @@
 class GameOverTimer : public Timer {
 	void trigger() {
 		GameOverWindow* gw = new GameOverWindow();
-		Reg::add(gw);
-		delete this;
+		Reg::remove(this);
 	}
 };
 
@@ -29,7 +28,7 @@ void EnemyBasic::update(double elapsed) {
 
 void EnemyBasic::onExit() {
 	Window::onExit();
-	delete this;
+	Reg::remove(this);
 }
 
 EnemyBasic::~EnemyBasic() {
