@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "Metrics.h"
 
-
 Metrics::Metrics(HWND hWnd) {
 	HMONITOR monitor = MonitorFromWindow(hWnd, MONITOR_DEFAULTTOPRIMARY);
 	MONITORINFO mInfo;
@@ -38,4 +37,5 @@ int Metrics::y(int y) {
 }
 
 Metrics::~Metrics() {
+
 }

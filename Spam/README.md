@@ -12,4 +12,3 @@
  * Accelerating/decelerating
 * Cleanup code
  * Remove as many inline constants as possible
-* Detect pause cheat and show popup

@@ -2,6 +2,12 @@
 #include "GameOverWindow.h"
 #include "Reg.h"
 
+#define BTN_CLASS L"BUTTON"
+#define BTN_TEXT L"Play again"
+#define BTN_WIDTH 96
+#define BTN_HEIGHT 32
+#define BTN_MARGIN 8
+
 GameOverWindow::GameOverWindow() : Window::Window() {
 	setSize(metrics->thirdW, metrics->thirdH);
 	alignCenter(metrics->halfW);
@@ -21,8 +27,8 @@ GameOverWindow::GameOverWindow() : Window::Window() {
 
 	RECT r1;
 	GetClientRect(hWnd, &r1);
-	HWND hWndButton = CreateWindow(L"BUTTON", L"Play again", WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_PUSHBUTTON,
-		(r1.right - r1.left) / 2 - 48, (r1.bottom - r1.top) - 40, 96, 32,
+	HWND hWndButton = CreateWindow(BTN_CLASS, BTN_TEXT, WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_PUSHBUTTON,
+		(r1.right - r1.left - BTN_WIDTH) / 2, (r1.bottom - r1.top) - BTN_HEIGHT - BTN_MARGIN, BTN_WIDTH, BTN_HEIGHT,
 		hWnd, NULL, Reg::inst, NULL);
 
 	InvalidateRect(hWnd, 0, TRUE);

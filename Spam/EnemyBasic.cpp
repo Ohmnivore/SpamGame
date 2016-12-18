@@ -4,6 +4,9 @@
 #include "Timer.h"
 #include "GameOverWindow.h"
 
+#define SCORE 1
+#define SHAKE_DELAY 2
+
 class GameOverTimer : public Timer {
 	void trigger() {
 		GameOverWindow* gw = new GameOverWindow();
@@ -12,7 +15,7 @@ class GameOverTimer : public Timer {
 };
 
 EnemyBasic::EnemyBasic() : Window::Window() {
-	score = 1;
+	score = SCORE;
 }
 
 void EnemyBasic::update(double elapsed) {
@@ -20,9 +23,9 @@ void EnemyBasic::update(double elapsed) {
 
 	if (y >= Reg::m->height && !Reg::paused) {
 		Reg::paused = true;
-		Reg::shake(2.0);
+		Reg::shake(SHAKE_DELAY);
 		GameOverTimer* t = new GameOverTimer();
-		t->start(2.0);
+		t->start(SHAKE_DELAY);
 	}
 }
 

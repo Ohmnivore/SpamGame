@@ -20,9 +20,6 @@
     <ClInclude Include="targetver.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Spam.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Metrics.h">
       <Filter>Header Files</Filter>
     </ClInclude>

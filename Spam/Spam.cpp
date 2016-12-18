@@ -1,5 +1,4 @@
 #include "stdafx.h"
-#include "Spam.h"
 #include "Metrics.h"
 #include "Window.h"
 #include "Scoreboard.h"
