@@ -95,7 +95,8 @@
       <SubSystem>Windows</SubSystem>
     </Link>
     <PostBuildEvent>
-      <Command>XCOPY "$(ProjectDir)images" "$(TargetDir)\images\" /S /Y</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -110,7 +111,8 @@
       <SubSystem>Windows</SubSystem>
     </Link>
     <PostBuildEvent>
-      <Command>XCOPY "$(ProjectDir)images" "$(TargetDir)\images\" /S /Y</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -128,7 +130,8 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PostBuildEvent>
-      <Command>XCOPY "$(ProjectDir)images" "$(TargetDir)\images\" /S /Y</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -146,7 +149,8 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
     <PostBuildEvent>
-      <Command>XCOPY "$(ProjectDir)images" "$(TargetDir)\images\" /S /Y</Command>
+      <Command>
+      </Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -155,6 +159,7 @@
     <ClInclude Include="GameOverWindow.h" />
     <ClInclude Include="Metrics.h" />
     <ClInclude Include="Reg.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Scoreboard.h" />
     <ClInclude Include="Spam.h" />
     <ClInclude Include="Spawner.h" />
@@ -197,6 +202,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Spam.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

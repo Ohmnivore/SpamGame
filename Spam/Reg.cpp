@@ -2,6 +2,7 @@
 #include "Reg.h"
 #include "Scoreboard.h"
 #include "Spawner.h"
+#include "resource.h"
 
 namespace Reg {
 
@@ -10,7 +11,7 @@ namespace Reg {
 	std::list<Entity*> ents;
 	std::vector<Entity*> toAdd;
 	std::vector<Entity*> toRemove;
-	std::vector<std::wstring*> images;
+	std::vector<int> images;
 	std::mt19937 rng;
 	int score;
 	bool paused;
@@ -104,24 +105,22 @@ namespace Reg {
 	}
 
 	void initImages() {
-		WIN32_FIND_DATA ffd;
-		HANDLE hFind;
-
-		hFind = FindFirstFile(L"images/*.bmp", &ffd);
-		if (hFind == INVALID_HANDLE_VALUE)
-			throw "Couldn't load images directory";
-		else {
-			do {
-				std::wstring* path = new std::wstring(L"images/");
-				*path += ffd.cFileName;
-				images.push_back(path);
-			} while (FindNextFile(hFind, &ffd) != 0);
-		}
+		images.push_back(IDB_BITMAP1);
+		images.push_back(IDB_BITMAP2);
+		images.push_back(IDB_BITMAP3);
+		images.push_back(IDB_BITMAP4);
+		images.push_back(IDB_BITMAP5);
+		images.push_back(IDB_BITMAP6);
+		images.push_back(IDB_BITMAP7);
+		images.push_back(IDB_BITMAP8);
+		images.push_back(IDB_BITMAP9);
+		images.push_back(IDB_BITMAP10);
+		images.push_back(IDB_BITMAP11);
 	}
 
-	std::wstring getRandomImage() {
+	int getRandomImage() {
 		std::uniform_int_distribution<int> uni(0, images.size() - 1);
-		return *images.at(uni(Reg::rng));
+		return images.at(uni(Reg::rng));
 	}
 
 	void toggleDesktopIconsVisible() {

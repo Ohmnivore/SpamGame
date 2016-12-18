@@ -39,8 +39,8 @@ Window::Window() {
 	UpdateWindow(hWnd);
 }
 
-void Window::loadImage(std::wstring path) {
-	hImg = (HBITMAP)LoadImage(NULL, (LPCWSTR)path.c_str(), IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE | LR_LOADTRANSPARENT);
+void Window::loadImage(int id) {
+	hImg = (HBITMAP)LoadImage(hInst, MAKEINTRESOURCE(id), IMAGE_BITMAP, 0, 0, LR_SHARED | LR_LOADTRANSPARENT);
 	if (hImg == NULL)
 		throw "Couldn't load image";
 }

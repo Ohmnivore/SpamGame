@@ -12,5 +12,4 @@
  * Accelerating/decelerating
 * Cleanup code
  * Remove as many inline constants as possible
-* Bundle bmps into the exe
 * Detect pause cheat and show popup

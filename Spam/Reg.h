@@ -21,7 +21,7 @@ namespace Reg {
 	extern void add(Entity* ent);
 	extern void remove(Entity* ent);
 	extern void update(double elapsed);
-	extern std::wstring getRandomImage();
+	extern int getRandomImage();
 	extern void shake(double length = 1.0, double intensity = 0.01);
 	extern void toggleDesktopIconsVisible();
 	extern int getHighscore();

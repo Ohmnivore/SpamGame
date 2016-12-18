@@ -5,6 +5,7 @@
 #include "Scoreboard.h"
 #include "Reg.h"
 #include "Spawner.h"
+#include "resource.h"
 using namespace std;
 
 int lastTick;

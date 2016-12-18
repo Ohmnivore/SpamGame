@@ -7,7 +7,7 @@ public:
 	Window();
 	virtual ~Window();
 
-	virtual void loadImage(std::wstring path);
+	virtual void loadImage(int id);
 	virtual void update(double elapsed);
 	virtual void onExit();
 	virtual void onPaint(HDC hdc);
