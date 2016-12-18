@@ -5,7 +5,7 @@
 class Window : public Entity {
 public:
 	Window();
-	~Window();
+	virtual ~Window();
 
 	virtual void loadImage(std::wstring path);
 	virtual void update(double elapsed);
@@ -31,6 +31,7 @@ public:
 	double y;
 	double velX;
 	double velY;
+	bool closed;
 
 protected:
 	static LRESULT CALLBACK wndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);

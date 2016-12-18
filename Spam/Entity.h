@@ -2,7 +2,7 @@
 class Entity {
 public:
 	Entity();
-	~Entity();
+	virtual ~Entity();
 
 	virtual void update(double elapsed);
 };

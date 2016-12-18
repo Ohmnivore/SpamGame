@@ -26,9 +26,6 @@
     <ClInclude Include="Metrics.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Util.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Scoreboard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -62,9 +59,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Metrics.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Util.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Scoreboard.cpp">

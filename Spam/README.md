@@ -15,5 +15,4 @@
 * Proper destructors
 * Detect pause cheat and show popup
 * Cleanup code
- * Get rid of Util.h
- * Remove as many online constants as possible
+ * Remove as many inline constants as possible

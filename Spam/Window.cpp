@@ -1,15 +1,16 @@
 #include "stdafx.h"
 #include "Window.h"
-#include "Util.h"
 #include "Reg.h"
 
 
 Window::Window() {
+	Reg::add(this);
 	this->metrics = Reg::m;
 
 	wTitle = L"";
 	wClass = L"SpamClass";
 	score = 0;
+	closed = false;
 
 	width = height = x = y = velX = velY = 0;
 
@@ -55,6 +56,7 @@ void Window::update(double elapsed) {
 }
 
 void Window::onExit() {
+	closed = true;
 	if (!Reg::paused)
 		Reg::score += score;
 }
@@ -144,7 +146,8 @@ LRESULT CALLBACK Window::wndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
 			break;
 		}
 		case WM_DESTROY:
-			ent->onExit();
+			if (!ent->closed)
+				ent->onExit();
 			break;
 		default:
 			return DefWindowProc(hWnd, message, wParam, lParam);
@@ -154,6 +157,8 @@ LRESULT CALLBACK Window::wndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
 }
 
 Window::~Window() {
+	Reg::remove(this);
+
 	wTitle = nullptr;
 	wClass = nullptr;
 	metrics = nullptr;

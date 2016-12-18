@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "Scoreboard.h"
-#include "Util.h"
 #include "Reg.h"
 
 Scoreboard::Scoreboard() : Window::Window() {
@@ -21,7 +20,7 @@ void Scoreboard::update(double elapsed) {
 }
 
 void Scoreboard::onExit() {
-	toggleDesktopIconsVisible();
+	Reg::toggleDesktopIconsVisible();
 	PostQuitMessage(0);
 	delete this;
 }

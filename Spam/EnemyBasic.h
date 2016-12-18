@@ -6,5 +6,6 @@ public:
 	EnemyBasic();
 	~EnemyBasic();
 	void update(double elapsed);
+	void onExit();
 };
 

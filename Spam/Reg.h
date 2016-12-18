@@ -22,6 +22,7 @@ namespace Reg {
 	extern void update(double elapsed);
 	extern std::wstring getRandomImage();
 	extern void shake(double length = 1.0, double intensity = 0.01);
+	extern void toggleDesktopIconsVisible();
 	extern int getHighscore();
 	extern void setHighscore(int score);
 };

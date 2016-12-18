@@ -162,7 +162,6 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Window.h" />
-    <ClInclude Include="Util.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="EnemyBasic.cpp" />
@@ -181,7 +180,6 @@
     </ClCompile>
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="Window.cpp" />
-    <ClCompile Include="Util.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="images\curly_pills.bmp" />

@@ -92,6 +92,10 @@ namespace Reg {
 		return *images.at(uni(Reg::rng));
 	}
 
+	void toggleDesktopIconsVisible() {
+		SendMessage(GetWindow(FindWindow(L"Progman", L"Program Manager"), GW_CHILD), WM_COMMAND, 0x7402, 0);
+	}
+
 	int getHighscore() {
 		DWORD buffer;
 		unsigned long type = REG_DWORD;

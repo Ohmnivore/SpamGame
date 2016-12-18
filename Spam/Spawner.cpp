@@ -23,7 +23,6 @@ void Spawner::update(double elapsed) {
 
 void Spawner::spawn() {
 	EnemyBasic* ent = new EnemyBasic();
-	Reg::add(ent);
 	ent->loadImage(Reg::getRandomImage());
 
 	ent->setSize(Reg::m->thirdW - Reg::m->margin * 2, Reg::m->thirdH - Reg::m->margin * 2);

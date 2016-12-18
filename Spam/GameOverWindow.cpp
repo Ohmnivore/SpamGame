@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "GameOverWindow.h"
-#include "Util.h"
 #include "Reg.h"
 
 GameOverWindow::GameOverWindow() : Window::Window() {
@@ -22,7 +21,7 @@ GameOverWindow::GameOverWindow() : Window::Window() {
 }
 
 void GameOverWindow::onExit() {
-	toggleDesktopIconsVisible();
+	Reg::toggleDesktopIconsVisible();
 	PostQuitMessage(0);
 }
 

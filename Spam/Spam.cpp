@@ -3,7 +3,6 @@
 #include "Metrics.h"
 #include "Window.h"
 #include "Scoreboard.h"
-#include "Util.h"
 #include "Reg.h"
 #include "Spawner.h"
 using namespace std;
@@ -12,11 +11,10 @@ int lastTick;
 const int frameMS = 16;
 
 int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int nCmdShow) {
-	toggleDesktopIconsVisible();
+	Reg::toggleDesktopIconsVisible();
 	Reg::init(hInstance);
 
 	Scoreboard* scoreBoard = new Scoreboard();
-	Reg::ents.push_back((Entity*)scoreBoard);
 
 	Spawner* s1 = new Spawner(Reg::m->thirdW * 0.5 + Reg::m->margin / 2, 0);
 	s1->spawn();
