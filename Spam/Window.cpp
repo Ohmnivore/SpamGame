@@ -2,13 +2,15 @@
 #include "Window.h"
 #include "Reg.h"
 
+#define W_CLASS L"SpamClass"
+#define W_TITLE L""
+#define IMG_WIDTH 1280
+#define IMG_HEIGHT 640
 
 Window::Window() {
 	Reg::add(this);
 	this->metrics = Reg::m;
 
-	wTitle = L"";
-	wClass = L"SpamClass";
 	score = 0;
 	closed = false;
 
@@ -25,12 +27,12 @@ Window::Window() {
 	wcex.hCursor = LoadCursor(NULL, IDC_ARROW);
 	wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
 	wcex.lpszMenuName = NULL;
-	wcex.lpszClassName = wClass;
+	wcex.lpszClassName = W_CLASS;
 	wcex.hIconSm = LoadIcon(NULL, IDI_APPLICATION);
 	RegisterClassExW(&wcex);
 
 	hInst = Reg::inst;
-	hWnd = CreateWindowW(wClass, wTitle, WS_SYSMENU,
+	hWnd = CreateWindowW(W_CLASS, W_TITLE, WS_SYSMENU,
 		CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInst, nullptr);
 	if (!hWnd)
 		throw "Couldn't create window";
@@ -119,8 +121,8 @@ LRESULT CALLBACK Window::wndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
 				GetClientRect(hWnd, &rect);
 				int clientWidth = rect.right - rect.left;
 				int clientHeight = rect.bottom - rect.top;
-				int orgWidth = 1280;
-				int orgHeight = 640;
+				int orgWidth = IMG_WIDTH;
+				int orgHeight = IMG_HEIGHT;
 				int srcWidth = 0;
 				int srcHeight = 0;
 				double clientRatio = (double)clientHeight / (double)clientWidth;
@@ -164,10 +166,7 @@ LRESULT CALLBACK Window::wndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
 }
 
 Window::~Window() {
-	wTitle = nullptr;
-	wClass = nullptr;
 	metrics = nullptr;
-
 	CloseWindow(hWnd);
 	DestroyWindow(hWnd);
 }

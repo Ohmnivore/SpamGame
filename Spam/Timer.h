@@ -5,7 +5,8 @@ class Timer : public Entity {
 public:
 	Timer();
 	virtual ~Timer();
-	void start(double time);
+
+	virtual void start(double time);
 	virtual void update(double elapsed);
 	virtual void trigger();
 	
@@ -13,4 +14,3 @@ public:
 	double elapsed;
 	bool finished;
 };
-

@@ -36,8 +36,5 @@ public:
 
 protected:
 	static LRESULT CALLBACK wndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam);
-
-	WCHAR* wTitle;
-	WCHAR* wClass;
 	int score;
 };

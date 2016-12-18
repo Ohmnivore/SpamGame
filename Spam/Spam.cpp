@@ -7,8 +7,10 @@
 #include "resource.h"
 using namespace std;
 
+#define FPS 16.0
+#define S_TO_MS 1000.0
+
 int lastTick;
-const int frameMS = 16;
 
 int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int nCmdShow) {
 	Reg::toggleDesktopIconsVisible();
@@ -30,9 +32,9 @@ int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmd
 				lastTick = nowTick;
 			int delta = nowTick - lastTick;
 
-			if (delta >= frameMS) {
+			if (delta >= FPS) {
 				lastTick = nowTick;
-				double elapsed = delta / 1000.0;
+				double elapsed = delta / S_TO_MS;
 				Reg::update(elapsed);
 				for (Entity* e : Reg::ents) {
 					e->update(elapsed);
