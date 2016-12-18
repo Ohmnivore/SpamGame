@@ -4,8 +4,9 @@
 
 Scoreboard::Scoreboard() : Window::Window() {
 	setSize(metrics->eightW, metrics->eightH);
-	alignRight(metrics->width);
+	alignLeft(0);
 	alignBot(metrics->height);
+	SetWindowPos(hWnd, HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
 
 	oldScore = -1;
 }

@@ -11,6 +11,7 @@ public:
 	virtual void update(double elapsed);
 	virtual void onExit();
 	virtual void onPaint(HDC hdc);
+	virtual void onCmd();
 
 	virtual void setSize(int width, int height);
 	virtual void alignLeft(int x);

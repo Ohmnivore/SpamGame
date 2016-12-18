@@ -12,7 +12,6 @@
  * Accelerating/decelerating
 * Game over: play again button
 * Bundle bmps into the exe
-* Proper destructors
 * Detect pause cheat and show popup
 * Cleanup code
  * Remove as many inline constants as possible

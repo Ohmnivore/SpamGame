@@ -65,6 +65,10 @@ void Window::onPaint(HDC hdc) {
 
 }
 
+void Window::onCmd() {
+
+}
+
 void Window::setSize(int width, int height) {
 	if (height > width)
 		height = width;
@@ -145,6 +149,9 @@ LRESULT CALLBACK Window::wndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM 
 			}
 			break;
 		}
+		case WM_COMMAND:
+			ent->onCmd();
+			break;
 		case WM_DESTROY:
 			if (!ent->closed)
 				ent->onExit();

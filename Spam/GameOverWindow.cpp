@@ -18,6 +18,14 @@ GameOverWindow::GameOverWindow() : Window::Window() {
 		L". Your best score is: " +
 		std::to_wstring(highscore) +
 		L".";
+
+	RECT r1;
+	GetClientRect(hWnd, &r1);
+	HWND hWndButton = CreateWindow(L"BUTTON", L"Play again", WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_PUSHBUTTON,
+		(r1.right - r1.left) / 2 - 48, (r1.bottom - r1.top) - 40, 96, 32,
+		hWnd, NULL, Reg::inst, NULL);
+
+	InvalidateRect(hWnd, 0, TRUE);
 }
 
 void GameOverWindow::onExit() {
@@ -27,7 +35,6 @@ void GameOverWindow::onExit() {
 
 void GameOverWindow::update(double elapsed) {
 	Window::update(elapsed);
-	InvalidateRect(hWnd, 0, TRUE);
 }
 
 void GameOverWindow::onPaint(HDC hdc) {
@@ -38,6 +45,10 @@ void GameOverWindow::onPaint(HDC hdc) {
 	SetBkMode(hdc, TRANSPARENT);
 
 	DrawText(hdc, msg.c_str(), -1, &rect, DT_CENTER | DT_VCENTER | DT_SINGLELINE);
+}
+
+void GameOverWindow::onCmd() {
+	throw "clicked";
 }
 
 GameOverWindow::~GameOverWindow() {
