@@ -1,5 +1,6 @@
 #pragma once
 #include "Entity.h"
+#include "Window.h"
 
 class Spawner : public Entity {
 public:
@@ -9,8 +10,9 @@ public:
 	void update(double elapsed);
 	void spawn();
 
-private:
+protected:
 	void setTrigger(double min);
+	void setupBasicEnemy(Window* ent);
 
 	int x;
 	int y;

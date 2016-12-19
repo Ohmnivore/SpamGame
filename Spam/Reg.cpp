@@ -9,6 +9,8 @@
 #define PROG_CLASS L"Progman"
 #define PROG_TITLE L"Program Manager"
 #define PROG_CTRL 0x7402
+#define SHELL_CLASS L"Shell_TrayWnd"
+#define SHELL_CTRL 419
 
 namespace Reg {
 
@@ -133,6 +135,10 @@ namespace Reg {
 	int getRandomImage() {
 		std::uniform_int_distribution<int> uni(0, images.size() - 1);
 		return images.at(uni(Reg::rng));
+	}
+
+	void minimizeAllWindows() {
+		SendMessage(FindWindow(SHELL_CLASS, NULL), WM_COMMAND, (WPARAM)SHELL_CTRL, 0);
 	}
 
 	void toggleDesktopIconsVisible() {

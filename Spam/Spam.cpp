@@ -13,6 +13,7 @@ using namespace std;
 int lastTick;
 
 int APIENTRY wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int nCmdShow) {
+	Reg::minimizeAllWindows();
 	Reg::toggleDesktopIconsVisible();
 	Reg::init(hInstance);
 

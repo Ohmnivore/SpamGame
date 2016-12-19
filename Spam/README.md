@@ -1,13 +1,9 @@
 # TODO
-* Increasing difficulty with time
- * More frequent difficult enemies
 * Enemies
- * Simple
- * Aggregated simple
- * Fast
  * Horizontal slide-in to middle of screen
- * Circle motion
  * Accelerating/decelerating
+ * Circular motion
 * Cleanup code
+ * Better memory cleanup on exit?
  * Figure out exception handling
  * Comment code
