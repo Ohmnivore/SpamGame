@@ -10,7 +10,7 @@ public:
 	void spawn();
 
 private:
-	void setTrigger();
+	void setTrigger(double min);
 
 	int x;
 	int y;

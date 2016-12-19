@@ -20,6 +20,8 @@ namespace Reg {
 	std::vector<int> images;
 	std::mt19937 rng;
 	int score;
+	double elapsed;
+	double difficulty;
 	bool paused;
 	void initImages();
 
@@ -56,6 +58,7 @@ namespace Reg {
 		}
 
 		score = 0;
+		elapsed = difficulty = 0;
 		paused = false;
 		shakeX = shakeY = shakeTimer = shakeIntensity = 0;
 
@@ -79,7 +82,7 @@ namespace Reg {
 		toRemove.push_back(ent);
 	}
 
-	void update(double elapsed) {
+	void update(double e) {
 		while (!toAdd.empty()) {
 			ents.push_back(toAdd.back());
 			toAdd.pop_back();
@@ -92,7 +95,10 @@ namespace Reg {
 			delete rem;
 		}
 
-		shakeTimer -= elapsed;
+		elapsed += e;
+		difficulty = sin(elapsed / 4.0) * 12.0 + elapsed;
+
+		shakeTimer -= e;
 		if (shakeTimer <= 0) {
 			shakeX = shakeY = shakeTimer = shakeIntensity = 0;
 		}

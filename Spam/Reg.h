@@ -12,6 +12,8 @@ namespace Reg {
 	extern std::list<Entity*> ents;
 	extern std::mt19937 rng;
 	extern int score;
+	extern double elapsed;
+	extern double difficulty;
 	extern bool paused;
 	extern double shakeX;
 	extern double shakeY;

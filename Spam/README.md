@@ -1,7 +1,5 @@
 # TODO
 * Increasing difficulty with time
- * Spawn rate
- * Enemy speed
  * More frequent difficult enemies
 * Enemies
  * Simple

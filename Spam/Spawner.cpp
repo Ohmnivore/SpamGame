@@ -8,7 +8,6 @@
 Spawner::Spawner(int x, int y) {
 	this->x = x;
 	this->y = y;
-	setTrigger();
 }
 
 void Spawner::update(double elapsed) {
@@ -16,7 +15,6 @@ void Spawner::update(double elapsed) {
 		this->elapsed += elapsed;
 		if (this->elapsed >= trigger) {
 			spawn();
-			setTrigger();
 		}
 	}
 }
@@ -28,14 +26,16 @@ void Spawner::spawn() {
 	ent->setSize(Reg::m->thirdW - Reg::m->margin * 2, Reg::m->thirdH - Reg::m->margin * 2);
 	ent->alignCenter(x);
 	ent->alignBot(y);
+	ent->velY = Reg::m->fourthH / 3.0;
 
-	ent->velY = 48;
+	setTrigger((double)(ent->height + Reg::m->margin / 2.0) / ent->velY);
 }
 
-void Spawner::setTrigger() {
+void Spawner::setTrigger(double min) {
 	elapsed = 0;
 
-	std::uniform_int_distribution<int> uni(5, 8);
+	double addTime = max(0.0, 10.0 * (1.0 - Reg::difficulty / 30.0));
+	std::uniform_real_distribution<double> uni(min, min + addTime);
 	trigger = uni(Reg::rng);
 }
 
