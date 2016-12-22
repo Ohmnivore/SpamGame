@@ -26,7 +26,7 @@ namespace Reg {
 	extern int getRandomImage();
 	extern void shake(double length = 1.0, double intensity = 0.01);
 	extern void minimizeAllWindows();
-	extern void toggleDesktopIconsVisible();
+	extern void setDesktopIconsVisible(bool visible);
 	extern int getHighscore();
 	extern void setHighscore(int score);
 };

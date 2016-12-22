@@ -36,7 +36,7 @@ GameOverWindow::GameOverWindow() : Window::Window() {
 
 void GameOverWindow::onExit() {
 	Window::onExit();
-	Reg::toggleDesktopIconsVisible();
+	Reg::setDesktopIconsVisible(true);
 	PostQuitMessage(0);
 	delete this;
 }

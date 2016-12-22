@@ -22,7 +22,7 @@ void Scoreboard::update(double elapsed) {
 
 void Scoreboard::onExit() {
 	Window::onExit();
-	Reg::toggleDesktopIconsVisible();
+	Reg::setDesktopIconsVisible(true);
 	PostQuitMessage(0);
 	delete this;
 }

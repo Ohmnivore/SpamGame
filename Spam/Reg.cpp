@@ -3,6 +3,7 @@
 #include "Scoreboard.h"
 #include "Spawner.h"
 #include "resource.h"
+#include <ShlObj.h>
 
 #define REG_SUBKEY L"Software\\SpamGame\\Highscore"
 #define REG_VALUE L"Highscore"
@@ -141,8 +142,12 @@ namespace Reg {
 		SendMessage(FindWindow(SHELL_CLASS, NULL), WM_COMMAND, (WPARAM)SHELL_CTRL, 0);
 	}
 
-	void toggleDesktopIconsVisible() {
-		SendMessage(GetWindow(FindWindow(PROG_CLASS, PROG_TITLE), GW_CHILD), WM_COMMAND, PROG_CTRL, 0);
+	void setDesktopIconsVisible(bool visible) {
+		SHELLFLAGSTATE s;
+		SHGetSettings(&s, SSF_HIDEICONS);
+
+		if (!visible != s.fHideIcons)
+			SendMessage(GetWindow(FindWindow(PROG_CLASS, PROG_TITLE), GW_CHILD), WM_COMMAND, PROG_CTRL, 0);
 	}
 
 	int getHighscore() {
