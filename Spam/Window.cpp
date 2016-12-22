@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Window.h"
 #include "Reg.h"
+#include "resource.h"
 
 #define W_CLASS L"SpamClass"
 #define W_TITLE L""
@@ -23,12 +24,12 @@ Window::Window() {
 	wcex.cbClsExtra = 0;
 	wcex.cbWndExtra = 0;
 	wcex.hInstance = Reg::inst;
-	wcex.hIcon = LoadIcon(NULL, IDI_APPLICATION);
+	wcex.hIcon = LoadIcon(Reg::inst, MAKEINTRESOURCE(IDI_ICON1));
+	wcex.hIconSm = LoadIcon(Reg::inst, MAKEINTRESOURCE(IDI_ICON1));
 	wcex.hCursor = LoadCursor(NULL, IDC_ARROW);
 	wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
 	wcex.lpszMenuName = NULL;
 	wcex.lpszClassName = W_CLASS;
-	wcex.hIconSm = LoadIcon(NULL, IDI_APPLICATION);
 	RegisterClassExW(&wcex);
 
 	hInst = Reg::inst;

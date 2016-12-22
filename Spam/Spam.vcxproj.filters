@@ -129,6 +129,7 @@
     <Image Include="images\elevators.bmp">
       <Filter>Images</Filter>
     </Image>
+    <Image Include="images\mail.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />

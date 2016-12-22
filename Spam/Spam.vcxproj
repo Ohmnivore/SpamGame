@@ -197,6 +197,7 @@
     <Image Include="images\hot_moms.bmp" />
     <Image Include="images\hot_moms.png" />
     <Image Include="images\konami_code.bmp" />
+    <Image Include="images\mail.ico" />
     <Image Include="images\president.bmp" />
     <Image Include="images\ram.bmp" />
     <Image Include="images\rich.bmp" />

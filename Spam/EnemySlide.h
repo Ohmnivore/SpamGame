@@ -5,4 +5,7 @@ class EnemySlide : public Window {
 public:
 	EnemySlide();
 	~EnemySlide();
+
+	void onExit();
+	void startSlide();
 };

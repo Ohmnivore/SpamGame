@@ -10,6 +10,8 @@ public:
 	void update(double elapsed);
 	void spawn();
 
+	bool canSlide;
+
 protected:
 	void setTrigger(double min);
 	void setupBasicEnemy(Window* ent);
